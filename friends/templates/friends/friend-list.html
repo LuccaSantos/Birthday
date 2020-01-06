@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} your gonna die {% endblock %}
+
+{% block content %}
+<!-- div add friend button -->
+<div>
+    <a href="createfriend/">ADD FRIEND</a>
+</div>
+<!-- div friend list -->
+<div>
+    <ul>
+        {% for friend in friends %}
+        <li>
+            <span><a href="friend/{{ friend.id }}">{{friend.name}}</a></span>
+            <span><a href="editfriend/{{ friend.id }}">EDIT</a></span>
+            <span><a href="deletefriend/{{ friend.id }}">REMOVE</a></span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

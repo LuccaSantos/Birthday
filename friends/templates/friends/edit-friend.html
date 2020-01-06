@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} your gonna die {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!-- div form edit friend  -->
+<div>
+    <h1>Edit Friend:</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}
