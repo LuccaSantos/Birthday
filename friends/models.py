@@ -2,7 +2,7 @@ from django.db import models
 
 class Friend(models.Model):
     name = models.CharField(max_length=250)
-    birthday = models.CharField(max_length=15)
+    birthday = models.DateField()
     age = models.IntegerField()
     gift = models.TextField()
 
@@ -12,3 +12,4 @@ class Friend(models.Model):
 
     def __str__(self):
         return self.name
+

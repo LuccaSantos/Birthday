@@ -5,7 +5,17 @@ from .models import Friend
 
 
 def friendList(request):
-    friends = Friend.objects.all()
+    search = request.GET.get('search')
+    filter = request.GET.get('filter')
+
+    # create the logic of the filter
+
+    if search:
+        friends = Friend.objects.filter(name__icontains=search)
+    elif filter:
+        friends = Friend.objects.filter()
+    else:
+        friends = Friend.objects.all()
     return render(request, 'friends/friend-list.html', {'friends': friends})
 
 
@@ -42,7 +52,7 @@ def editFriend(request, id):
         return render(request, 'friends/edit-friend.html', {'form': form, 'friend': friend})
 
 
-def deleteFriend(request ,id):
+def deleteFriend(request , id):
     friend = get_object_or_404(Friend, pk=id)
     friend.delete()
     return redirect('/')
