@@ -2,16 +2,19 @@
 {% block title %} your re gonna die {% endblock %}
 
 {% block content %}
-<!-- div friend  -->
-<div>
-    <h4>Name: {{ friend.name }}</h4>
-    <!-- <h4>Birthday: {{ friend.birthday }}</h4> -->
-    <h4>Age: {{ friend.age }}</h4>
-    <h4>Gift: {{ friend.gift }}</h4>
-</div>
-<!-- div actions friend -->
-<div>
-    <span><a href="../editfriend/{{ friend.id }}">EDIT</a></span>
-    <span><a href="../deletefriend/{{ friend.id }}">REMOVE</a></span>
+<div class="content">
+    <!-- div friend  -->
+    <div class="friend-infos">
+        <h4>Name: {{ friend.name }}</h4>
+        <h4>Birthday: {{ friend.birthday }}</h4>
+        <h4>Age: {{ friend.age }}</h4>
+        <h4>Gift: {{ friend.gift }}</h4>
+    </div>
+    <!-- div actions friend -->
+    <div class="friends-actions">
+        <span><a href="../editfriend/{{ friend.id }}" class="fas fa-edit">EDIT</a></span>
+        <span><a href="../deletefriend/{{ friend.id }}" class="fas fa-trash">REMOVE</a></span>
+
+    </div>
 </div>
 {% endblock %}

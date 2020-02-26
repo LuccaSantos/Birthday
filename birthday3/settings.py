@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'about', 
     'friends',
     'crispy_forms',
+    'accounts', 
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,17 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/accounts/login'
+
+
+
+# email settings 
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = 'localhost'
+
+EMAIL_HOST = 'console.gmail.com'
+
+# EMAIL_USE_TLS = True
+
+EMAIL_PORT = 587

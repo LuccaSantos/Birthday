@@ -1,39 +1,80 @@
 {% extends 'base.html' %}
-{% block title %} your re gonna die {% endblock %}
+{% block title %} Bithday/Home {% endblock %}
 
 {% block content %}
-<!-- div add friend button -->
-<div>
-    <a href="createfriend/">ADD FRIEND</a>
-</div>
-<!-- div filter -->
-<div>
-    <span>Filter for:</span>
-    <select name="filter" id="filter" class="form-control">
-        <option value="">Choise a option</option>
-        <option value="">Today</option>
-        <option value="">This month</option>
-        <option value="">Next month</option>
-    </select>
-</div>
-<!-- div search -->
-<div>
-    <form method="GET" id="search-form">
-        <input type="text" name="search" id="search" placeholder="Type the name of the task..."
-            value="{{ request.GET.search }}">
-        <input type="submit" value="submit">
-    </form>
-</div>
-<!-- div friend list -->
-<div>
-    <ul>
-        {% for friend in friends %}
-        <li>
-            <span><a href="friend/{{ friend.id }}">{{friend.name}}</a></span>
-            <span><a href="editfriend/{{ friend.id }}">EDIT</a></span>
-            <span><a href="deletefriend/{{ friend.id }}">REMOVE</a></span>
-        </li>
-        {% endfor %}
-    </ul>
+<div class="content">
+    <article>
+        <!-- div filter -->
+        <div class="form-group">
+            <label for="filter">Filter for:</label>
+            <select class="form-control" name="filter" id="filter">
+                <option value="#">Choise a option</option>
+                <option value="today">Today</option>
+                <option value="this-month">This month</option>
+                <option value="next-month">Next month</option>
+            </select>
+        </div>
+        <!-- div search -->
+        <div class="search-div">
+            <form class="form-inline my-2 my-lg-0" method="GET" id="search-form">
+                <input class="form-control mr-sm-2" type="text" name="search" id="search"
+                    placeholder="Type the name of the task..." value="{{ request.GET.search }}">
+                <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="submit" id="search-btn">
+            </form>
+        </div>
+        <!-- div add friend button -->
+        <div class="add-friend-button">
+            <button class="btn btn-light my-2 my-sm-0"><a href="{% url 'friends:create-friend' %}" class="fas fa-plus"> Add Friend </a></button>
+        </div>
+        <!-- div messages -->
+        <div class="message">
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <!-- div friend list -->
+        <div class="friend-list">
+            <ul class="list-group">
+                {% for friend in friends %}
+                <li class="list-group-item">
+                    <a href="{% url 'friends:friend-view' friend.id %}">{{friend.name}}</a>
+                    <span><a href="{% url 'friends:edit-friend' friend.id %}" class="fas fa-edit"></a></span>
+                    <span><a href="{% url 'friends:delete-friend' friend.id %}"
+                            class="delete-btn fas fa-trash"></a></span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- div paginator -->
+        <nav aria-label="Page navigation example">
+            {% if friends.has_other_pages %}
+            <ul class="pagination">
+                {% if friends.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ friends.previous_page_number }}">Previous</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled"><a class="page-link">Previous</a></li>
+                {% endif %}
+                {% for i in friends.paginator.page_range %}
+                {% if friends.number == i %}
+                <li class="page-item active"><a class="page-link">{{ i }} <span class="sr-only">(current)</span></a>
+                </li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if friends.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ friends.next_page_number }}">Next</a></li>
+                {% else %}
+                <li class="page-item disabled"><a class="page-link">Next</a></li>
+                {% endif %}
+            </ul>
+            {% else %}
+            {% endif %}
+        </nav>
 </div>
 {% endblock %}

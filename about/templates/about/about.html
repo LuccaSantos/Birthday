@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %} Bithday/About {% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<!-- div   -->
+<div class="content">
+    <div class="about-app">
+        <h2>About this web aplication</h2>
+        <p>
+            I developed this aplication for the purpose of applying knowledge, this is basicly an <strong>CRUD</strong>
+            you can <strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate and
+            <strong>D</strong>elete data from database, very simple.
+            The ideia is salve the birthday of your friends and the aplication send an email so you don't forget
+            . Yes, equals Facebook, but many peoples are abandoning this social network and don't
+            want to abandoning the function that warns about friends birthday, because this I created this
+        </p>
+    </div>
+    <hr>
+    <div class="about-me">
+        <h2>About me</h2>
+        <p>
+            My name is Lucas, I have 20y and systems development technician
+            I'm passionate about IT, mainly because of its challenges and the magic of turning ideas into real
+            things to make life more easier for peoples, through my knowledge.
+        </p>
+
+        <div class="logo">
+            <img src="{% static 'image/eu.png' %}" alt="my picture">
+            <h1>Santos Lucas</h1>
+            <h3>Web developer</h3>
+        </div>
+    
+    </div>
+    <div class="send-email">
+        <p>If you've a question or feedback send for me :D</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

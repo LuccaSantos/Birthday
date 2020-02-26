@@ -1,17 +1,135 @@
 body {
+  margin: 0px;
+  padding: 0px;
 
+  background-image: #F6FCFC;
+}
+a {
+  text-decoration: none;
+}
+
+/* Personalização para smartfone */
+@media only screen and (max-width: 480px){}
+
+/* Personalização para tablets */
+@media only screen and (min-width: 481px){}
+
+/* Personalização para PC */
+@media only screen and (min-width: 960px){
+  .content{
+    height: 65em;
+    width: 50em;
+
+    margin: auto;
+    margin-top: 1em;
+
+    background-color: #343a40;
+    color:#F6FCFC;
+  }
+  article {
+    width: 100%;
+  
+  }
+  /* navbar */
+  .navbar-collapse ul {
+    margin-left: 2em;
+     
+  }
+  /* filter */
+  article .form-group {
+    width: 25%;
+    float: left;
+    margin: 1em;
+  }
+  /* search */
+  .search-div {
+    float: right;
+    margin-right: 2em;
+    margin-left: 2em;
+    margin-top: 3em;
+
+  }
+  /* add friend button */
+  .add-friend-button {
+    float: right;
+    margin-top: 3em;
+    margin-right: 1em; 
+
+  }
+  .message {
+    clear: both;
+    width: 90%;
+  }
+  .message ul {
+    list-style: none;
+  }
+  /* friend-list */
+  .friend-list {
+    height: 50%;
+    clear: both;
+    margin: 1em;
+  }
+  /* about */ 
+  h2 {
+    text-align: center;
+  }
+  .about-app {
+  }
+  .about-app .about-me{
+    margin: 20px;
+  }
+  .about-app, p{
+    text-indent: 3em;
+    text-align: left;
+  }
+  .about-me img {
+    height: 300px;
+    width: 300px;
+
+    border-radius: 50%;
+    border: 3px solid gray;
+  }
+  .about-me .logo {
+    height: 100%;
+    width: 250px;
+
+    margin: auto;
     
+    text-align: center;
   }
-  
+  /* div send email */ 
+  .send-email p {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 3em; 
+  }
+  .send-email {
+    margin: 5em;
+  }
+  /* footer */ 
+  footer {
+    /* clear: both; */
+  }
+  /* friend view */
+  .friend-infos {
+    width: 50%;
+    height: 20%;
 
-  @media screen and (max-width: 992px) {
-    body {
-      
-    }
+    /* text-align: center; */
+    padding-top: 4em;
+    margin: auto;
   }
-  
-  @media screen and (max-width: 600px) {
-    body {
-      
-    }
+
+  .friends-actions {
+    width: 10em;
+    padding-top: 4em;
+    margin: auto;
   }
+
+/* 
+ palette:
+  #F6FCFC
+  #D3E7F3
+  #B2D8ED
+  #6CA0D1
+*/
