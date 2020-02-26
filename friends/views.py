@@ -41,7 +41,7 @@ def friendList(request):
 
     else:
         friends_list = Friend.objects.all().filter(user=request.user)
-        paginator = Paginator(friends_list, 10)
+        paginator = Paginator(friends_list, 3)
         page = request.GET.get('page')
         friends = paginator.get_page(page)
         # friends = Friend.objects.all().filter(user=request.user)
