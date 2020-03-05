@@ -8,6 +8,8 @@ from django.contrib import messages
 from datetime import date
 from dateutil.relativedelta import relativedelta
 from django.core.mail import send_mail, BadHeaderError
+# from django.views import generic
+# from django.views.generic import ListView, DetailView
 
 
 @login_required
@@ -16,9 +18,12 @@ def friendList(request):
     filter = request.GET.get('filter')
     date_today = date.today()
 
-    friends = Friend.objects.filter(birthday=date_today, user=request.user).count()
+    friends = Friend.objects.filter(
+        birthday=date_today, user=request.user).count()
+        
     if friends >= 1:
-        send_mail('BIRTHDAY', 'Today is a birthday of a friend', 'teste@gmail.com', ['admin@example.com'])
+        send_mail('BIRTHDAY', 'Today is a birthday of a friend',
+                  'teste@gmail.com', ['admin@example.com'])
 
     if search:
         friends = Friend.objects.filter(
@@ -41,7 +46,7 @@ def friendList(request):
 
     else:
         friends_list = Friend.objects.all().filter(user=request.user)
-        paginator = Paginator(friends_list, 3)
+        paginator = Paginator(friends_list, 5)
         page = request.GET.get('page')
         friends = paginator.get_page(page)
         # friends = Friend.objects.all().filter(user=request.user)

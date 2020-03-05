@@ -24,7 +24,8 @@
         </div>
         <!-- div add friend button -->
         <div class="add-friend-button">
-            <button class="btn btn-light my-2 my-sm-0"><a href="{% url 'friends:create-friend' %}" class="fas fa-plus"> Add Friend </a></button>
+            <button class="btn btn-light my-2 my-sm-0"><a href="{% url 'friends:create-friend' %}" class="fas fa-plus">
+                    Add Friend </a></button>
         </div>
         <!-- div messages -->
         <div class="message">
@@ -50,7 +51,7 @@
             </ul>
         </div>
         <!-- div paginator -->
-        <nav aria-label="Page navigation example">
+        <nav>
             {% if friends.has_other_pages %}
             <ul class="pagination">
                 {% if friends.has_previous %}

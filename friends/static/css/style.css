@@ -17,10 +17,11 @@ a {
 /* Personalização para PC */
 @media only screen and (min-width: 960px){
   .content{
-    height: 65em;
+    height: auto;
     width: 50em;
 
     margin: auto;
+    padding: 1em;
     margin-top: 1em;
 
     background-color: #343a40;
@@ -69,14 +70,22 @@ a {
     clear: both;
     margin: 1em;
   }
+  .pagination {
+    width: 220px;
+    margin: auto;
+    color: rebeccapurple;
+  }
   /* about */ 
   h2 {
     text-align: center;
   }
   .about-app {
   }
+  .about-me {
+    height: 500px;
+  }
   .about-app .about-me{
-    margin: 20px;
+    margin: 1em;
   }
   .about-app, p{
     text-indent: 3em;
@@ -101,7 +110,6 @@ a {
   .send-email p {
     font-size: 20px;
     text-align: center;
-    margin-top: 3em; 
   }
   .send-email {
     margin: 5em;
